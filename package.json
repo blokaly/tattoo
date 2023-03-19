@@ -1,0 +1,39 @@
+{
+  "name": "tattoo",
+  "version": "1.0.0",
+  "description": "Terraform AWS Typescript Telegram bot Of OpenAI",
+  "main": "app.js",
+  "repository": "https://github.com/blokaly/tattoo",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist && rimraf package",
+    "mkdirs": "mkdir dist && mkdir package",
+    "copy:js": "cp dist/*.js* package/",
+    "copy:node-modules": "cp -r node_modules package/",
+    "copy": "npm run copy:js && npm run copy:node-modules",
+    "compile": "tsc",
+    "reinstall": "rimraf node_modules && npm install",
+    "build": "npm run compile && npm run copy",
+    "rebuild": "npm run reinstall && npm run build",
+    "prezip": "npm run clean && npm run mkdirs && npm run rebuild"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/aws-lambda": "^8.10.109",
+    "@types/axios": "^0.14.0",
+    "@types/node": "^18.11.17",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.238.0",
+    "@aws-sdk/client-ssm": "^3.238.0",
+    "@aws-sdk/util-dynamodb": "^3.238.0",
+    "axios": "^1.2.1",
+    "node-polyglot": "^2.4.2",
+    "telegraf": "^4.11.2",
+    "winston": "^3.8.2"
+  }
+}
